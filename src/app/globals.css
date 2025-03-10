@@ -3,11 +3,13 @@
 :root {
   --background: #323230;
   --foreground: #fcf5e4;
+  --secondary: #9d9385;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-secondary: var(--secondary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
