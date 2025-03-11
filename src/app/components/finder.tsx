@@ -1,14 +1,7 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
+import FinderScreen from '@/components/finder-screen';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,21 +12,20 @@ import useFinder from '@/zustand/finder';
 import { useState } from 'react';
 
 export default function Finder() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   const finderOpen = useFinder((state) => state.isFinderOpen);
   const setFinderOpen = useFinder((state) => state.setFinderOpen);
-
-  const [profileDialogOpen, setProfileDialogOpen] = useState(false);
-  const [billingDialogOpen, setBillingDialogOpen] = useState(false);
 
   return (
     <>
       <DropdownMenu
-        open={finderOpen}
-        onOpenChange={setFinderOpen}
+        open={dropdownOpen}
+        onOpenChange={setDropdownOpen}
         modal={false}
       >
         <DropdownMenuTrigger asChild>
-          <Button>Open</Button>
+          <button>pear</button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
           side='bottom'
@@ -42,46 +34,14 @@ export default function Finder() {
           alignOffset={12}
           className='rounded-none bg-foreground text-background'
         >
-          <DropdownMenuItem
-            onClick={() => setProfileDialogOpen(!profileDialogOpen)}
-          >
-            Profile
+          <DropdownMenuItem onClick={() => setFinderOpen(!finderOpen)}>
+            Finder
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      <Dialog open={profileDialogOpen} onOpenChange={setProfileDialogOpen}>
-        <DialogContent className='sm:max-w-[425px]'>
-          <DialogHeader>
-            <DialogTitle>Edit Profile</DialogTitle>
-            <DialogDescription>
-              Make changes to your profile here. Click save when youre done.
-            </DialogDescription>
-          </DialogHeader>
-          <div className='grid gap-4 py-4'>
-            <div className='grid grid-cols-4 items-center gap-4'></div>
-            <div className='grid grid-cols-4 items-center gap-4'></div>
-          </div>
-          <DialogFooter>
-            <Button type='submit'>Save changes</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      <Dialog open={billingDialogOpen} onOpenChange={setBillingDialogOpen}>
-        <DialogContent className='sm:max-w-[425px]'>
-          <DialogHeader>
-            <DialogTitle>Billing Information</DialogTitle>
-            <DialogDescription>
-              Update your billing details and payment method.
-            </DialogDescription>
-          </DialogHeader>
-          <div className='grid gap-4 py-4'>
-            <div className='grid grid-cols-4 items-center gap-4'></div>
-            <div className='grid grid-cols-4 items-center gap-4'></div>
-          </div>
-          <DialogFooter>
-            <Button type='submit'>Update Billing</Button>
-          </DialogFooter>
+      <Dialog open={finderOpen} onOpenChange={setFinderOpen}>
+        <DialogContent className='w-[90vw] min-w-[90vw] h-[80vh] rounded-none border-4 border-background bg-foreground text-background p-0'>
+          <FinderScreen />
         </DialogContent>
       </Dialog>
     </>
