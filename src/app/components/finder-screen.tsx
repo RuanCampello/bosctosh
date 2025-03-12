@@ -1,9 +1,10 @@
+import FileIcon from '@/components/file-icon';
 import { DialogClose } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
 
 function SeparatorGroup() {
   return (
-    <div className='flex flex-col gap-[6px] w-full'>
+    <div className='flex flex-col gap-[5px] w-full'>
       {[...Array(4)].map((_, i) => (
         <Separator
           key={i}
@@ -18,7 +19,7 @@ function SeparatorGroup() {
 export default function FinderScreen() {
   return (
     <div>
-      <header className='grid grid-cols-[0.5fr_auto_0.5fr_1fr_1fr] items-center border-b-4 border-background p-1.5 gap-2'>
+      <header className='grid grid-cols-[0.5fr_auto_0.5fr_1fr_1fr] items-center border-b-4 border-background px-2 gap-2'>
         <SeparatorGroup />
         <DialogClose asChild>
           <button>
@@ -29,6 +30,9 @@ export default function FinderScreen() {
         <h1 className='text-3xl font-chicago text-center'>Finder</h1>
         <SeparatorGroup />
       </header>
+      <section className='w-full h-full p-2'>
+        <FileIcon title='xdd.txt' type='article' />
+      </section>
     </div>
   );
 }
