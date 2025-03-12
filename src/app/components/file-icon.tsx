@@ -22,7 +22,9 @@ export default function FileIcon({ title, type }: FileIconProps) {
         className='w-20 h-20 scale-120 pointer-events-none'
         src={icons[type]}
       />
-      <h3 className='text-base font-chicago select-none'>{title}</h3>
+      <h3 className='text-base font-chicago select-none cursor-pointer'>
+        {title}
+      </h3>
     </button>
   );
 }

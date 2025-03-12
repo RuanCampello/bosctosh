@@ -40,7 +40,7 @@ export default function Finder() {
         >
           <DropdownMenuItem
             onClick={() => setFinderOpen(!finderOpen)}
-            className='font-chicago border-4 border-background p-1 bg-foreground hover:brightness-90 transition-all duration-300'
+            className='font-chicago border-4 border-background p-1 bg-foreground hover:brightness-90 transition-all duration-300 cursor-pointer'
           >
             Finder
           </DropdownMenuItem>

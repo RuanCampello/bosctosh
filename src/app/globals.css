@@ -49,6 +49,19 @@
   --font-chicago: 'Chicago', 'sans-serif';
 }
 
+/* global.css */
+@layer base {
+  * {
+    cursor: url('/assets/cursor-default.png'), auto;
+  }
+}
+
+@layer utilities {
+  .cursor-pointer {
+    cursor: url('/assets/cursor-pointer.png'), pointer;
+  }
+}
+
 @font-face {
   font-family: 'Chicago';
   src: url('../../public/fonts/Chicago.ttf') format('truetype');

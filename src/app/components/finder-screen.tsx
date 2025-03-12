@@ -22,12 +22,12 @@ export default function FinderScreen() {
       <header className='grid grid-cols-[0.5fr_auto_0.5fr_1fr_1fr] items-center border-b-4 border-background gap-2'>
         <SeparatorGroup />
         <DialogClose asChild>
-          <button className='cursor-pointer'>
-            <div className='border-2 border-solid border-background w-6 h-6 hover:bg-background/10 transition-all duration-200' />
+          <button>
+            <div className='border-2 border-solid border-background w-6 h-6 hover:bg-background/10 transition-all duration-200 cursor-pointer' />
           </button>
         </DialogClose>
         <SeparatorGroup />
-        <h1 className='text-3xl font-chicago text-center select-none'>
+        <h1 className='cursor-pointer text-3xl font-chicago text-center select-none'>
           Finder
         </h1>
         <SeparatorGroup />
