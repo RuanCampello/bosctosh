@@ -27,7 +27,9 @@ export default function FinderScreen() {
           </button>
         </DialogClose>
         <SeparatorGroup />
-        <h1 className='text-3xl font-chicago text-center'>Finder</h1>
+        <h1 className='text-3xl font-chicago text-center select-none'>
+          Finder
+        </h1>
         <SeparatorGroup />
       </header>
       <section className='w-full h-full p-2'>

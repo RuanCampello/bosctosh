@@ -19,10 +19,10 @@ export default function FileIcon({ title, type }: FileIconProps) {
     <button className='w-fit flex flex-col cursor-pointer'>
       <Image
         alt={type}
-        className='w-18 h-18 scale-120 pointer-events-none'
+        className='w-20 h-20 scale-120 pointer-events-none'
         src={icons[type]}
       />
-      <h3 className='text-sm font-chicago select-none'>{title}</h3>
+      <h3 className='text-base font-chicago select-none'>{title}</h3>
     </button>
   );
 }
