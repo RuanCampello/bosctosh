@@ -2,12 +2,14 @@ import useFile from '@/zustand/file';
 
 import Article from '@/assets/article.svg';
 import Folder from '@/assets/folder.svg';
+import Lock from '@/assets/lock.png';
 import File from '@/assets/text.svg';
 import Image from 'next/image';
 
 interface FileIconProps {
   title: string;
   type: 'article' | 'file' | 'folder';
+  isLocked?: boolean;
 }
 
 const icons = {
@@ -16,13 +18,17 @@ const icons = {
   folder: Folder,
 };
 
-export default function FileIcon({ title, type }: FileIconProps) {
+export default function FileIcon({
+  title,
+  type,
+  isLocked = false,
+}: FileIconProps) {
   const openFile = useFile((state) => state.openFile);
 
   return (
     <button
-      className='w-fit flex flex-col cursor-pointer'
-      onClick={() => openFile(title)}
+      className='w-fit relative flex flex-col cursor-pointer'
+      onClick={() => openFile(title, isLocked)}
     >
       <Image
         alt={type}
@@ -32,6 +38,9 @@ export default function FileIcon({ title, type }: FileIconProps) {
       <h3 className='text-base font-chicago select-none cursor-pointer'>
         {title}
       </h3>
+      {isLocked && (
+        <Image src={Lock} alt='locked' className='absolute bottom-6 right-2' />
+      )}
     </button>
   );
 }

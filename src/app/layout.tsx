@@ -1,4 +1,5 @@
 import File from '@/components/file';
+import Password from '@/components/password';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -30,6 +31,7 @@ export default function RootLayout({
       >
         {children}
         <File />
+        <Password />
       </body>
     </html>
   );

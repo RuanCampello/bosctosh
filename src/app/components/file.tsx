@@ -13,10 +13,7 @@ export default function File() {
     <Dialog open={isOpen} onOpenChange={closeFile}>
       <DialogContent className='z-50 border-4 border-background bg-foreground text-background rounded-none border-solid p-0 min-w-[50vw] min-h-[50vh] flex flex-col gap-0'>
         <FinderHeader title={fileId!} />
-        <article className=' p-4'>
-          <h1>File Component</h1>
-          {fileId}
-        </article>
+        <article className='p-4'></article>
       </DialogContent>
     </Dialog>
   );
