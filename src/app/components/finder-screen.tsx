@@ -1,5 +1,5 @@
+import FileIcon from '@/components/file-icon';
 import FinderHeader from '@/components/finder-header';
-import FileIcon from './file-icon';
 
 export default function FinderScreen() {
   return (

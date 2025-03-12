@@ -11,7 +11,7 @@ export default function FinderHeader({ title }: { title: string }) {
         </button>
       </DialogClose>
       <SeparatorGroup />
-      <h1 className='cursor-pointer text-3xl font-chicago text-center select-none'>
+      <h1 className='cursor-pointer text-2xl font-chicago text-center select-none'>
         {title}
       </h1>
       <SeparatorGroup />

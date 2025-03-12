@@ -39,14 +39,13 @@ export default function FileIcon({
             isLocked &&
             sessionStorage.getItem(`file-locked-${title}`) !== 'false'
           ) {
-            // Set locked state only once per session
             sessionStorage.setItem(`file-locked-${title}`, 'false');
             setIsLocked(false);
           }
 
-          openFile(title, correctPassword); // Ensure the file opens
+          openFile(title, correctPassword);
         } else if (type === 'folder') {
-          openFolder(title); // Open folder
+          openFolder(title);
         }
       }}
     >
