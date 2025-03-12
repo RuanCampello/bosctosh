@@ -28,19 +28,21 @@ export default function Finder() {
           <button>pear</button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
-          side='bottom'
           sideOffset={12}
+          side='bottom'
           align='end'
-          alignOffset={12}
-          className='rounded-none bg-foreground text-background'
+          className='rounded-none bg-foreground text-background p-0 m-0 border-0 ms-2 '
         >
-          <DropdownMenuItem onClick={() => setFinderOpen(!finderOpen)}>
+          <DropdownMenuItem
+            onClick={() => setFinderOpen(!finderOpen)}
+            className='font-chicago border-4 border-background p-1 bg-foreground hover:brightness-90 transition-all duration-300'
+          >
             Finder
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
       <Dialog open={finderOpen} onOpenChange={setFinderOpen}>
-        <DialogContent className='w-[90vw] min-w-[90vw] h-[80vh] rounded-none border-4 border-background bg-foreground text-background p-0'>
+        <DialogContent className='w-[80vw] min-w-[80vw] h-[80vh] rounded-none border-4 border-background bg-foreground text-background p-2 pt-0'>
           <FinderScreen />
         </DialogContent>
       </Dialog>

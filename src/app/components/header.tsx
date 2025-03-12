@@ -37,7 +37,7 @@ export default function Header() {
   );
 }
 
-function Item({ content }: { content: String }) {
+function Item({ content }: { content: string }) {
   return (
     <h2 className='font-chicago text-lg'>
       <span>{content}</span>

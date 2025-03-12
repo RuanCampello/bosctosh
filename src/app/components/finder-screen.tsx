@@ -19,7 +19,7 @@ function SeparatorGroup() {
 export default function FinderScreen() {
   return (
     <div>
-      <header className='grid grid-cols-[0.5fr_auto_0.5fr_1fr_1fr] items-center border-b-4 border-background px-2 gap-2'>
+      <header className='grid grid-cols-[0.5fr_auto_0.5fr_1fr_1fr] items-center border-b-4 border-background gap-2'>
         <SeparatorGroup />
         <DialogClose asChild>
           <button className='cursor-pointer'>
