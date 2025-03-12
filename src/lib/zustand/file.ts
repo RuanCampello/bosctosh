@@ -8,7 +8,8 @@ interface FileStore {
   password: string;
   setPassword: (password: string) => void;
   isLocked: boolean;
-  openFile: (id: string, locked: boolean) => void;
+  openFile: (id: string) => void;
+  setIsLocked: (locked: boolean) => void;
   closeModal: () => void;
   closePasswordModal: () => void;
   clearFile: () => void;
@@ -17,28 +18,41 @@ interface FileStore {
 
 const useFile = create<FileStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       fileId: null,
       isLocked: false,
       isOpen: false,
       isPasswordOpen: false,
       password: '',
       setPassword: (password: string) => set({ password }),
-      openFile: (id: string, locked: boolean) => {
-        if (locked) {
+      openFile: (id: string) => {
+        if (!get().isLocked) {
           set({
             fileId: id,
-            isLocked: true,
-            isPasswordOpen: true,
+            isOpen: true,
+            isPasswordOpen: false,
           });
         } else {
-          set({ fileId: id, isOpen: true });
+          set({
+            fileId: id,
+            isOpen: false,
+            isPasswordOpen: true,
+          });
         }
       },
+      setIsLocked: (locked: boolean) => set({ isLocked: locked }),
       closeModal: () => set({ isOpen: false }),
       closePasswordModal: () => set({ isPasswordOpen: false }),
       clearFile: () => set({ fileId: null, isOpen: false }),
-      unlockFile: () => set({ isLocked: false, isOpen: true }),
+      unlockFile: () => {
+        if (get().isLocked) {
+          set({
+            isLocked: false,
+            isOpen: true,
+            isPasswordOpen: false,
+          });
+        }
+      },
     }),
     {
       name: 'file-modal-store',

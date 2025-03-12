@@ -24,11 +24,20 @@ export default function FileIcon({
   isLocked = false,
 }: FileIconProps) {
   const openFile = useFile((state) => state.openFile);
+  const setIsLocked = useFile((state) => state.setIsLocked);
+
+  const isAlreadyLocked =
+    sessionStorage.getItem(`file-locked-${title}`) === 'true';
+
+  if (isLocked && !isAlreadyLocked) {
+    setIsLocked(true);
+    sessionStorage.setItem(`file-locked-${title}`, 'true');
+  }
 
   return (
     <button
       className='w-fit relative flex flex-col cursor-pointer'
-      onClick={() => openFile(title, isLocked)}
+      onClick={() => openFile(title)}
     >
       <Image
         alt={type}

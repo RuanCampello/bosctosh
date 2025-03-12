@@ -21,6 +21,7 @@ export default function Password() {
   const closePasswordModal = useFile((state) => state.closePasswordModal);
   const setPassword = useFile((state) => state.setPassword);
   const unlockFile = useFile((state) => state.unlockFile);
+  const isLocked = useFile((state) => state.isLocked);
 
   function tryUnlockFile() {
     if (password === '123') {
@@ -31,7 +32,7 @@ export default function Password() {
   }
 
   return (
-    <Dialog open={isPasswordOpen} onOpenChange={closePasswordModal}>
+    <Dialog open={isPasswordOpen && isLocked} onOpenChange={closePasswordModal}>
       <DialogContent className='max-w-[40vw] rounded-none bg-foreground border-4 border-background text-background font-chicago'>
         <DialogHeader className='flex flex-col gap-4'>
           <DialogTitle className='flex gap-4 items-center text-[26px]'>
