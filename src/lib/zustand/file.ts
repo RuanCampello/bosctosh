@@ -6,9 +6,10 @@ interface FileStore {
   isOpen: boolean;
   isPasswordOpen: boolean;
   password: string;
+  correctPassword: string;
   setPassword: (password: string) => void;
   isLocked: boolean;
-  openFile: (id: string) => void;
+  openFile: (id: string, password?: string) => void;
   setIsLocked: (locked: boolean) => void;
   closeModal: () => void;
   closePasswordModal: () => void;
@@ -24,8 +25,9 @@ const useFile = create<FileStore>()(
       isOpen: false,
       isPasswordOpen: false,
       password: '',
+      correctPassword: '',
       setPassword: (password: string) => set({ password }),
-      openFile: (id: string) => {
+      openFile: (id: string, password?: string) => {
         if (!get().isLocked) {
           set({
             fileId: id,
@@ -37,6 +39,7 @@ const useFile = create<FileStore>()(
             fileId: id,
             isOpen: false,
             isPasswordOpen: true,
+            correctPassword: password!,
           });
         }
       },

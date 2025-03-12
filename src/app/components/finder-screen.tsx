@@ -6,7 +6,12 @@ export default function FinderScreen() {
     <div className='flex flex-col'>
       <FinderHeader title='Finder' />
       <section className='w-full h-full p-2'>
-        <FileIcon title='xdd.txt' type='article' isLocked />
+        <FileIcon
+          title='xdd.txt'
+          type='article'
+          isLocked
+          correctPassword={'abcd'}
+        />
       </section>
     </div>
   );

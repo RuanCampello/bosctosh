@@ -10,6 +10,7 @@ interface FileIconProps {
   title: string;
   type: 'article' | 'file' | 'folder';
   isLocked?: boolean;
+  correctPassword?: string;
 }
 
 const icons = {
@@ -22,6 +23,7 @@ export default function FileIcon({
   title,
   type,
   isLocked = false,
+  correctPassword,
 }: FileIconProps) {
   const openFile = useFile((state) => state.openFile);
   const setIsLocked = useFile((state) => state.setIsLocked);
@@ -38,7 +40,10 @@ export default function FileIcon({
   return (
     <button
       className='w-fit relative flex flex-col cursor-pointer'
-      onClick={() => openFile(title)}
+      onClick={() => {
+        if (isLocked) openFile(title, correctPassword);
+        else openFile(title);
+      }}
     >
       <Image
         alt={type}

@@ -22,9 +22,11 @@ export default function Password() {
   const setPassword = useFile((state) => state.setPassword);
   const unlockFile = useFile((state) => state.unlockFile);
   const isLocked = useFile((state) => state.isLocked);
+  const correctPassword = useFile((state) => state.correctPassword);
 
   function tryUnlockFile() {
-    if (password === '123') {
+    console.log(password, correctPassword);
+    if (password === correctPassword) {
       unlockFile();
     }
 
