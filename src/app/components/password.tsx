@@ -16,8 +16,19 @@ import useFile from '@/lib/zustand/file';
 import Image from 'next/image';
 
 export default function Password() {
+  const password = useFile((state) => state.password);
   const isPasswordOpen = useFile((state) => state.isPasswordOpen);
   const closePasswordModal = useFile((state) => state.closePasswordModal);
+  const setPassword = useFile((state) => state.setPassword);
+  const unlockFile = useFile((state) => state.unlockFile);
+
+  function tryUnlockFile() {
+    if (password === '123') {
+      unlockFile();
+    }
+
+    closePasswordModal();
+  }
 
   return (
     <Dialog open={isPasswordOpen} onOpenChange={closePasswordModal}>
@@ -41,11 +52,21 @@ export default function Password() {
             <Label htmlFor='password' className='ms-auto'>
               Senha
             </Label>
-            <Input id='password' className='col-span-4' />
+            <Input
+              id='password'
+              onChange={(e) => setPassword(e.target.value)}
+              className='col-span-4'
+            />
           </div>
         </div>
         <DialogFooter>
-          <Button type='submit'>Confirmar</Button>
+          <Button
+            type='button'
+            onClick={tryUnlockFile}
+            className='hover:bg-background/90 bg-background transition-colors duration-200 cursor-pointer'
+          >
+            Confirmar
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
