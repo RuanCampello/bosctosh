@@ -2,17 +2,19 @@ import { StaticImageData } from 'next/image';
 import { create } from 'zustand';
 import { contents } from '../contents';
 
+export type File = {
+  title: string;
+  left_content: string;
+  right_content: string;
+  image: StaticImageData;
+  type: 'article' | 'file' | 'folder';
+  isLocked?: boolean;
+};
+
 interface Folder {
   id: string;
   name: string;
-  files: {
-    title: string;
-    left_content: string;
-    right_content: string;
-    image: StaticImageData;
-    type: 'article' | 'file' | 'folder';
-    isLocked?: boolean;
-  }[];
+  files: File[];
 }
 
 interface FolderStore {

@@ -54,7 +54,10 @@ export default function FileIcon({
         className='w-20 h-20 scale-120 pointer-events-none'
         src={icons[type]}
       />
-      <h3 className='text-base font-chicago select-none cursor-pointer'>
+      <h3
+        title={title}
+        className='text-base font-chicago select-none cursor-pointer max-w-20 leading-normal line-clamp-2'
+      >
         {title}
       </h3>
       {isFileLocked && (
