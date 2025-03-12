@@ -1,12 +1,19 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-const useFile = create(
+interface FileStore {
+  fileId: string | null;
+  isOpen: boolean;
+  openFile: (id: string) => void;
+  closeModal: () => void;
+  clearFile: () => void;
+}
+
+const useFile = create<FileStore>()(
   persist(
     (set) => ({
       fileId: null,
       isOpen: false,
-
       openFile: (id: string) => set({ fileId: id, isOpen: true }),
       closeModal: () => set({ isOpen: false }),
       clearFile: () => set({ fileId: null, isOpen: false }),

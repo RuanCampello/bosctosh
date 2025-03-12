@@ -1,3 +1,5 @@
+import useFile from '@/zustand/file';
+
 import Article from '@/assets/article.svg';
 import Folder from '@/assets/folder.svg';
 import File from '@/assets/text.svg';
@@ -15,8 +17,13 @@ const icons = {
 };
 
 export default function FileIcon({ title, type }: FileIconProps) {
+  const openFile = useFile((state) => state.openFile);
+
   return (
-    <button className='w-fit flex flex-col cursor-pointer'>
+    <button
+      className='w-fit flex flex-col cursor-pointer'
+      onClick={() => openFile(title)}
+    >
       <Image
         alt={type}
         className='w-20 h-20 scale-120 pointer-events-none'
