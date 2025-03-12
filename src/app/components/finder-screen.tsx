@@ -22,7 +22,7 @@ export default function FinderScreen() {
       <header className='grid grid-cols-[0.5fr_auto_0.5fr_1fr_1fr] items-center border-b-4 border-background px-2 gap-2'>
         <SeparatorGroup />
         <DialogClose asChild>
-          <button>
+          <button className='cursor-pointer'>
             <div className='border-2 border-solid border-background w-6 h-6' />
           </button>
         </DialogClose>

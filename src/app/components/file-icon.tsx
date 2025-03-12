@@ -17,8 +17,12 @@ const icons = {
 export default function FileIcon({ title, type }: FileIconProps) {
   return (
     <button className='w-fit flex flex-col cursor-pointer'>
-      <Image alt={type} className='w-18 h-18 scale-120' src={icons[type]} />
-      <h3 className='text-sm font-chicago'>{title}</h3>
+      <Image
+        alt={type}
+        className='w-18 h-18 scale-120 pointer-events-none'
+        src={icons[type]}
+      />
+      <h3 className='text-sm font-chicago select-none'>{title}</h3>
     </button>
   );
 }
