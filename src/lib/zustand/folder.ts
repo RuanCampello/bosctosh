@@ -1,39 +1,46 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 
-interface FolderStore {
-  folderId: string | null;
-  isOpen: boolean;
-  openFolder: (id: string) => void;
-  closeFolder: () => void;
-  clearFolder: () => void;
+interface Folder {
+  id: string;
+  name: string;
+  files: {
+    title: string;
+    type: 'article' | 'file' | 'folder';
+    isLocked?: boolean;
+  }[];
 }
 
-const useFolder = create<FolderStore>()(
-  persist(
-    (set) => ({
-      folderId: null,
-      isOpen: false,
-      openFolder: (id: string) => {
-        set({ folderId: id, isOpen: true });
-        console.log('opened', id);
-      },
-      closeFolder: () => set({ isOpen: false }),
-      clearFolder: () => set({ folderId: null, isOpen: false }),
-    }),
-    {
-      name: 'folder-modal-store',
-      storage: {
-        getItem: (key) => {
-          const item = sessionStorage.getItem(key);
-          return item ? JSON.parse(item) : null;
-        },
-        setItem: (key, value) =>
-          sessionStorage.setItem(key, JSON.stringify(value)),
-        removeItem: (key) => sessionStorage.removeItem(key),
-      },
+interface FolderStore {
+  isOpen: boolean;
+  folderId: string | null;
+  folders: Record<string, Folder>;
+  openFolder: (id: string) => void;
+  closeFolder: () => void;
+}
+
+const useFolder = create<FolderStore>((set) => ({
+  isOpen: false,
+  folderId: null,
+  folders: {
+    artigos: {
+      id: 'artigos',
+      name: 'Artigos',
+      files: [
+        { title: 'notes.txt', type: 'article', isLocked: false },
+        { title: 'confidential.txt', type: 'article', isLocked: true },
+      ],
     },
-  ),
-);
+  },
+  openFolder: (id) =>
+    set(() => ({
+      isOpen: true,
+      folderId: id,
+    })),
+  closeFolder: () =>
+    set({
+      isOpen: false,
+      folderId: null,
+    }),
+}));
 
 export default useFolder;

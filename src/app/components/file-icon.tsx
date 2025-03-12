@@ -1,9 +1,8 @@
-import useFile from '@/zustand/file';
-
 import Article from '@/assets/article.svg';
 import Folder from '@/assets/folder.svg';
 import Lock from '@/assets/lock.png';
 import File from '@/assets/text.svg';
+import useFile from '@/lib/zustand/file';
 import useFolder from '@/lib/zustand/folder';
 import Image from 'next/image';
 
@@ -29,28 +28,25 @@ export default function FileIcon({
   const openFile = useFile((state) => state.openFile);
   const setIsLocked = useFile((state) => state.setIsLocked);
   const isFileLocked = useFile((state) => state.isLocked);
-
-  const { openFolder } = useFolder();
-
-  if (type === 'file') {
-    const isAlreadyLocked =
-      sessionStorage.getItem(`file-locked-${title}`) === 'true';
-
-    if (isLocked && !isAlreadyLocked) {
-      setIsLocked(true);
-      sessionStorage.setItem(`file-locked-${title}`, 'true');
-    }
-  }
+  const openFolder = useFolder((state) => state.openFolder);
 
   return (
     <button
       className='w-fit relative flex flex-col cursor-pointer'
       onClick={() => {
-        if (type == 'file') {
-          if (isLocked) openFile(title, correctPassword);
-          else openFile(title);
-        } else if (type == 'folder') {
-          openFolder(title);
+        if (type === 'file' || type === 'article') {
+          if (
+            isLocked &&
+            sessionStorage.getItem(`file-locked-${title}`) !== 'false'
+          ) {
+            // Set locked state only once per session
+            sessionStorage.setItem(`file-locked-${title}`, 'false');
+            setIsLocked(false);
+          }
+
+          openFile(title, correctPassword); // Ensure the file opens
+        } else if (type === 'folder') {
+          openFolder(title); // Open folder
         }
       }}
     >
