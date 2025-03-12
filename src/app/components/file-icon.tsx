@@ -4,6 +4,7 @@ import Article from '@/assets/article.svg';
 import Folder from '@/assets/folder.svg';
 import Lock from '@/assets/lock.png';
 import File from '@/assets/text.svg';
+import useFolder from '@/lib/zustand/folder';
 import Image from 'next/image';
 
 interface FileIconProps {
@@ -29,20 +30,28 @@ export default function FileIcon({
   const setIsLocked = useFile((state) => state.setIsLocked);
   const isFileLocked = useFile((state) => state.isLocked);
 
-  const isAlreadyLocked =
-    sessionStorage.getItem(`file-locked-${title}`) === 'true';
+  const { openFolder } = useFolder();
 
-  if (isLocked && !isAlreadyLocked) {
-    setIsLocked(true);
-    sessionStorage.setItem(`file-locked-${title}`, 'true');
+  if (type === 'file') {
+    const isAlreadyLocked =
+      sessionStorage.getItem(`file-locked-${title}`) === 'true';
+
+    if (isLocked && !isAlreadyLocked) {
+      setIsLocked(true);
+      sessionStorage.setItem(`file-locked-${title}`, 'true');
+    }
   }
 
   return (
     <button
       className='w-fit relative flex flex-col cursor-pointer'
       onClick={() => {
-        if (isLocked) openFile(title, correctPassword);
-        else openFile(title);
+        if (type == 'file') {
+          if (isLocked) openFile(title, correctPassword);
+          else openFile(title);
+        } else if (type == 'folder') {
+          openFolder(title);
+        }
       }}
     >
       <Image

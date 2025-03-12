@@ -1,4 +1,5 @@
 import File from '@/components/file';
+import Folder from '@/components/folder';
 import Password from '@/components/password';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
@@ -31,6 +32,7 @@ export default function RootLayout({
       >
         {children}
         <File />
+        <Folder />
         <Password />
       </body>
     </html>
