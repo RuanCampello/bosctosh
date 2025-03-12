@@ -23,7 +23,7 @@ export default function FinderScreen() {
         <SeparatorGroup />
         <DialogClose asChild>
           <button className='cursor-pointer'>
-            <div className='border-2 border-solid border-background w-6 h-6' />
+            <div className='border-2 border-solid border-background w-6 h-6 hover:bg-background/10 transition-all duration-200' />
           </button>
         </DialogClose>
         <SeparatorGroup />

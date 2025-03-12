@@ -21,7 +21,7 @@ export default function Header() {
 
   return (
     <header className='font-chicago flex justify-between items-center border-b-4 text-background border-background px-8 shrink-0 grow-0 bg-foreground w-full overflow-hidden'>
-      <div className='flex items-center gap-4 shrink-0 grow-0 max-h-fit'>
+      <div className='flex items-center gap-4 h-full'>
         <Finder />
         <Item content='File' />
       </div>

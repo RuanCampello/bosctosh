@@ -25,7 +25,12 @@ export default function Finder() {
         modal={false}
       >
         <DropdownMenuTrigger asChild>
-          <button>pear</button>
+          <button
+            className='data-[active=true]:bg-background data-[active=true]:text-foreground h-8 px-3 flex items-center justify-center hover:bg-opacity-90 transition-colors'
+            data-active={dropdownOpen}
+          >
+            pear
+          </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
           sideOffset={12}
