@@ -25,6 +25,7 @@ export default function FileIcon({
 }: FileIconProps) {
   const openFile = useFile((state) => state.openFile);
   const setIsLocked = useFile((state) => state.setIsLocked);
+  const isFileLocked = useFile((state) => state.isLocked);
 
   const isAlreadyLocked =
     sessionStorage.getItem(`file-locked-${title}`) === 'true';
@@ -47,7 +48,7 @@ export default function FileIcon({
       <h3 className='text-base font-chicago select-none cursor-pointer'>
         {title}
       </h3>
-      {isLocked && (
+      {isFileLocked && (
         <Image src={Lock} alt='locked' className='absolute bottom-6 right-2' />
       )}
     </button>
