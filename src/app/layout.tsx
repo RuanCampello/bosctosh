@@ -22,7 +22,7 @@ const ebGaramond = EB_Garamond({
 
 export const metadata: Metadata = {
   title: 'Bosctosh',
-  description: 'Created by Pear',
+  description: 'Created by Pear© with ultraviolence',
 };
 
 export default function RootLayout({

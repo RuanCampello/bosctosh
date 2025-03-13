@@ -24,9 +24,9 @@ export default function Header() {
       <div className='flex items-center gap-4 h-full'>
         <Finder />
       </div>
-      <div className='flex items-center gap-2'>
+      <div className='flex items-center gap-3'>
         <Image src={Profile} alt='Logo' className='w-6 h-6' />
-        <div className='flex text-sm gap-1'>
+        <div className='flex text-sm gap-3'>
           <span suppressHydrationWarning>{time}</span>
           <div>|</div>
           <span suppressHydrationWarning>{dateString}</span>

@@ -50,7 +50,6 @@
   --font-eczar: 'Eczar', 'serif';
 }
 
-/* global.css */
 @layer base {
   * {
     cursor: url('/assets/cursor-default.png'), auto;
