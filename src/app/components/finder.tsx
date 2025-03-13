@@ -47,7 +47,7 @@ export default function Finder() {
         </DropdownMenuContent>
       </DropdownMenu>
       <Dialog open={finderOpen} onOpenChange={setFinderOpen}>
-        <DialogContent className='w-[80vw] min-w-[80vw] h-[80vh] rounded-none border-4 border-background bg-foreground text-background p-2 pt-0'>
+        <DialogContent className='w-[80vw] min-w-[80vw] h-[80vh] rounded-none border-4 border-background bg-foreground text-background p-0'>
           <FinderScreen />
         </DialogContent>
       </Dialog>

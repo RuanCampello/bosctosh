@@ -46,27 +46,27 @@ export const contents: Content[] = [
     {
         title: 'Um antigo gigante computacional',
         left_content:
-            'O ENIAC, pioneiro da computação digital, era um computador enorme, pesando mais de 30 toneladas e consumindo quase 200 quilowatts de energia, com 19.000 tubos de vácuo e outros componentes. Apesar de seu tamanho e complexidade, foi o protótipo dos computadores modernos, incorporando conceitos como portas lógicas ("e", "ou") e flip-flops para armazenamento e controle.',
+            'O ENIAC,Computador Integrador Numérico Eletrônico, era um computador enorme, pesando mais de 30 toneladas e consumindo quase 200 quilowatts de energia, com 19.000 tubos de vácuo e outros componentes. Apesar de seu tamanho e complexidade, foi o protótipo dos computadores modernos, incorporando conceitos como portas lógicas ("e", "ou") e flip-flops para armazenamento e controle.',
         right_content:
-            'Ele realizava operações matemáticas complexas (soma, subtração, multiplicação, divisão e raízes quadradas) e comparava números, armazenando até 20 números decimais de 10 dígitos. O ENIAC não tinha uma memória central; o armazenamento era distribuído em suas unidades funcionais, e a programação era feita externamente. Apesar de ter sido projetado décadas atrás, sua funcionalidade é surpreendentemente similar à dos computadores atuais, marcando o início da era da computação digital de alta velocidade.',
+            'Ele realizava operações matemáticas complexas (multiplicação, divisão e raízes quadradas) e comparava números, armazenando até 20 números decimais de 10 dígitos. O ENIAC não tinha uma memória central; o armazenamento era distribuído em suas unidades funcionais, e a programação era feita externamente. Apesar de ter sido projetado décadas atrás, sua funcionalidade é similar à dos computadores atuais, marcando o início da era da computação digital.',
         image: First,
         type: 'article',
         isLocked: false,
     },
     {
-        title: 'O primeiro computador',
+        title: 'As complicações do ENIAC',
         left_content:
-            'O ENIAC, pioneiro da computação digital, era um computador enorme, pesando mais de 30 toneladas e consumindo quase 200 quilowatts de energia, com 19.000 tubos de vácuo e outros componentes. Apesar de seu tamanho e complexidade, foi o protótipo dos computadores modernos, incorporando conceitos como portas lógicas ("e", "ou") e flip- flops para armazenamento e controle. Ele realizava operações matemáticas complexas (soma, subtração, multiplicação, divisão e raízes quadradas) e comparava números, armazenando até 20 números decimais de 10 dígitos',
+            'O ENIAC foi um dispositivo computacional eletroeletrônico e digital, pesando 30 toneladas e usando 19.000 tubos de vácuo. Realizava operações matemáticas complexas e armazenava até 20 números de 10 dígitos. Pioneiro da computação moderna, introduziu conceitos como portas lógicas e flip-flops.',
         right_content:
-            'Ele realizava operações matemáticas complexas (soma, subtração, multiplicação, divisão e raízes quadradas) e comparava números, armazenando até 20 números decimais de 10 dígitos. O ENIAC, inicialmente lento para programar, foi modificado em 1948 para usar programas fixos internamente, graças a uma sugestão de John von Neumann. Isso reduziu a necessidade de reconectar cabos, agilizando operações. Em 1949, com o Projeto Chore, o ENIAC provou sua eficiência, com menos falhas e maior confiabilidade, consolidando seu valor para cálculos complexos.',
+            'O ENIAC realizava operações matemáticas complexas como raízes quadradas e armazenava até 20 números de 10 dígitos. Inicialmente lento para programar, foi modificado em 1948 para usar programas fixos internamente, sugerido por John von Neumann, eliminando a necessidade de reconectar cabos e agilizando operações. Em 1949, com o Projeto Chore, o ENIAC demonstrou maior eficiência e menos falhas, consolidando-se como uma ferramenta útil para cálculos complexos.',
         image: First,
         type: 'article',
         isLocked: false,
     },
     {
-        title: 'As mulheres desenvolvedoras do ENIAC',
+        title: 'As mulheres do ENIAC',
         left_content:
-            'O ENIAC, o primeiro computador eletrônico, foi desenvolvido por John Mauchly e J. Presper Eckert na Universidade da Pensilvânia e programado inicialmente por seis mulheres: Kathleen McNulty, Jean Jennings, Frances Holberton, Marlyn Melzer, Frances Spence e Ruth Teitelbaum. Essas mulheres, recrutadas por suas habilidades matemáticas durante a Segunda Guerra Mundial, enfrentaram desafios únicos, já que a programação de computadores era uma área completamente nova.',
+            'O ENIAC, o primeiro dispositivo eletrônico digital, foi desenvolvido por John Mauchly e J. Presper Eckert na Universidade da Pensilvânia e programado inicialmente por seis mulheres: Kathleen McNulty, Jean Jennings, Frances Holberton, Marlyn Melzer, Frances Spence e Ruth Teitelbaum. Essas mulheres, recrutadas por suas habilidades matemáticas durante a Segunda Guerra Mundial, enfrentaram desafios únicos, já que a programação de computadores era uma área completamente nova.',
         right_content:
             'Apesar de suas contribuições cruciais para cálculos balísticos e, posteriormente, para estudos termonucleares, elas não receberam o mesmo reconhecimento que os homens no projeto. Sua história reflete a invisibilidade das mulheres na ciência e na computação, destacando a necessidade de reconhecer suas conquistas como pioneiras na área, superando barreiras de gênero e discriminação.',
         image: First,
@@ -74,14 +74,13 @@ export const contents: Content[] = [
         isLocked: false,
     },
     {
-        title: 'O primeiro computador',
+        title: 'A história do ENIAC',
         left_content:
-            'O ENIAC, pioneiro da computação digital, era um computador enorme, pesando mais de 30 toneladas e consumindo quase 200 quilowatts de energia, com 19.000 tubos de vácuo e outros componentes. Apesar de seu tamanho e complexidade, foi o protótipo dos computadores modernos, incorporando conceitos como portas lógicas ("e", "ou") e flip- flops para armazenamento e controle. Ele realizava operações matemáticas complexas (soma, subtração, multiplicação, divisão e raízes quadradas) e comparava números, armazenando até 20 números decimais de 10 dígitos',
+            'O ENIAC, primeiro equipamento eletrônico chamado de computador digital, foi criado por Mauchly e Eckert na Universidade da Pensilvânia (1943-1945) com financiamento do Exército dos EUA. Pesando 30 toneladas e consumindo 200 quilowatts, realizava operações complexas e introduziu conceitos como portas lógicas e flip-flops, sendo usado para cálculos balísticos e científicos.',
         right_content:
-            'Ele realizava operações matemáticas complexas (soma, subtração, multiplicação, divisão e raízes quadradas) e comparava números, armazenando até 20 números decimais de 10 dígitos. O ENIAC, inicialmente lento para programar, foi modificado em 1948 para usar programas fixos internamente, graças a uma sugestão de John von Neumann. Isso reduziu a necessidade de reconectar cabos, agilizando operações. Em 1949, com o Projeto Chore, o ENIAC provou sua eficiência, com menos falhas e maior confiabilidade, consolidando seu valor para cálculos complexos.',
+            'Originalmente programado externamente, o ENIAC foi adaptado em 1948 para operar com programas internos, graças a uma sugestão de John von Neumann, aumentando sua eficiência. Desativado em 1955, tornou-se obsoleto com o avanço tecnológico, mas seu legado foi preservado no Instituto Smithsonian, marcando o início da era da computação digital e impulsionando o desenvolvimento dos computadores modernos.',
         image: First,
         type: 'article',
         isLocked: false,
     },
-
 ];

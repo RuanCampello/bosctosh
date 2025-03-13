@@ -3,7 +3,7 @@ import { Separator } from '@/components/ui/separator';
 
 export default function FinderHeader({ title }: { title: string }) {
   return (
-    <header className='grid grid-cols-[0.5fr_auto_0.5fr_1fr_1fr] items-center border-b-4 border-background gap-2 h-fit'>
+    <header className='grid grid-cols-[0.5fr_auto_0.5fr_1fr_1fr] items-center border-b-4 border-background gap-2 h-fit py-2'>
       <SeparatorGroup />
       <DialogClose asChild>
         <button>
@@ -11,7 +11,7 @@ export default function FinderHeader({ title }: { title: string }) {
         </button>
       </DialogClose>
       <SeparatorGroup />
-      <h1 className='cursor-pointer text-2xl font-chicago text-center select-none'>
+      <h1 className='cursor-pointer text-xl font-chicago text-center select-none'>
         {title}
       </h1>
       <SeparatorGroup />
