@@ -2,13 +2,20 @@
 
 import Card from '@/assets/cards/card.png';
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function PassKeysCard() {
   const [position, setPosition] = useState({
-    x: window.innerWidth * 0.98,
-    y: window.innerHeight * 0.95,
+    x: 0,
+    y: 0,
   });
+
+  useEffect(() => {
+    setPosition({
+      x: window.innerWidth * 0.9,
+      y: window.innerHeight * 0.9,
+    });
+  }, []);
 
   const cardRef = useRef<HTMLDivElement | null>(null);
   const offset = useRef({ x: 0, y: 0 });
