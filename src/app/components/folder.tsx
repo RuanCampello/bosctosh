@@ -14,7 +14,7 @@ export default function FolderScreen() {
     <Dialog open={isOpen} onOpenChange={closeFolder}>
       <DialogContent className='flex flex-col bg-foreground text-background border-4 border-background border-solid p-0 rounded-none sm:max-w-[80vw] sm:max-h-[80vh]'>
         {currentFolder && <FinderHeader title={currentFolder.name} />}
-        <section className='p-2 grid grid-cols-3 gap-4'>
+        <section className='p-2 flex gap-8'>
           {currentFolder?.files.map((file) => (
             <FileIcon
               key={file.title}

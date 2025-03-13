@@ -32,7 +32,7 @@ export default function FileIcon({
 
   return (
     <button
-      className='w-fit relative flex flex-col cursor-pointer'
+      className='w-fit relative flex flex-col cursor-pointer justify-center'
       onClick={() => {
         if (type === 'file' || type === 'article') {
           if (
@@ -51,12 +51,12 @@ export default function FileIcon({
     >
       <Image
         alt={type}
-        className='w-20 h-20 scale-120 pointer-events-none'
+        className='w-32 h-32 scale-120 pointer-events-none'
         src={icons[type]}
       />
       <h3
         title={title}
-        className='text-base font-chicago select-none cursor-pointer max-w-20 leading-normal line-clamp-2'
+        className='text-lg -translate-y-2 font-chicago select-none cursor-pointer max-w-32 text-center leading-normal line-clamp-2'
       >
         {title}
       </h3>
