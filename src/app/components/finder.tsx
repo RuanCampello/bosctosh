@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import useFinder from '@/zustand/finder';
+
 import { useState } from 'react';
 
 export default function Finder() {
@@ -29,7 +30,7 @@ export default function Finder() {
             className='data-[active=true]:bg-background data-[active=true]:text-foreground h-8 px-3 flex items-center justify-center hover:bg-opacity-90 transition-colors'
             data-active={dropdownOpen}
           >
-            pear
+            Menu
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent

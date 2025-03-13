@@ -23,7 +23,6 @@ export default function Header() {
     <header className='font-chicago flex justify-between items-center border-b-4 text-background border-background px-8 shrink-0 grow-0 bg-foreground w-full overflow-hidden'>
       <div className='flex items-center gap-4 h-full'>
         <Finder />
-        <Item content='File' />
       </div>
       <div className='flex items-center gap-2'>
         <Image src={Profile} alt='Logo' className='w-6 h-6' />
@@ -34,13 +33,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  );
-}
-
-function Item({ content }: { content: string }) {
-  return (
-    <h2 className='font-chicago text-lg'>
-      <span>{content}</span>
-    </h2>
   );
 }

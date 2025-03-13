@@ -6,14 +6,14 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function PassKeysCard() {
   const [position, setPosition] = useState({
-    x: 0,
-    y: 0,
+    x: 3000,
+    y: 3000,
   });
 
   useEffect(() => {
     setPosition({
-      x: window.innerWidth * 0.9,
-      y: window.innerHeight * 0.9,
+      x: window.innerWidth * 0.98,
+      y: window.innerHeight * 0.98,
     });
   }, []);
 
@@ -48,12 +48,10 @@ export default function PassKeysCard() {
       ref={cardRef}
       onMouseDown={handleMouseDown}
       style={{
-        position: 'absolute',
         left: `${position.x}px`,
         top: `${position.y}px`,
-        cursor: 'grab',
       }}
-      className='w-60'
+      className='w-60 cursor-grab absolute'
     >
       <Image src={Card} alt='card' className='pointer-events-none' />
       <p className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-background font-bold'>
