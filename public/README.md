@@ -17,7 +17,7 @@ Um "computador pessoal". Simulação tosca de um Macintosh, feita com React, Nex
    npm run dev
    ```
 
-## 🛠️ Tecnologias
+## 🛠️ Stack
 
 - **React** – porque ninguém mais usa jQuery.
 - **Next.js** – porque SSR é legal até você ter que debugar.

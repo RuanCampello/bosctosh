@@ -26,7 +26,7 @@ export default function Readme() {
     >
       <DialogContent className='flex flex-col bg-foreground text-background border-4 border-background border-solid p-0 rounded-none sm:max-w-[60vw] sm:max-h-[80vh]'>
         <FinderHeader title={'Readme.md'} />
-        <div className='prose sm:max-w-[60vw] p-10 overflow-y-scroll cursor-grap'>
+        <div className='prose sm:max-w-[60vw] p-10 overflow-y-scroll cursor-grap select-none'>
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
       </DialogContent>
