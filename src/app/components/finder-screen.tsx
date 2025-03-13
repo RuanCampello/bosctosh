@@ -12,9 +12,9 @@ export default function FinderScreen() {
             key={file.title}
             title={file.title}
             type={file.type}
-            // left_content={file.left_content}
-            // right_content={file.right_content}
-            // image={file.image}
+            left_content={file.left_content}
+            right_content={file.right_content}
+            image={file.image}
             isLocked={file.isLocked}
             correctPassword={file.correctPassword}
           />

@@ -1,15 +1,23 @@
+import { StaticImageData } from 'next/image';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+export type File = {
+  left_content: string;
+  right_content: string;
+  image: StaticImageData;
+};
+
 interface FileStore {
   fileId: string | null;
+  file?: File;
   isOpen: boolean;
   isPasswordOpen: boolean;
   password: string;
   correctPassword: string;
   setPassword: (password: string) => void;
   isLocked: boolean;
-  openFile: (id: string, password?: string) => void;
+  openFile: (id: string, file: File, password?: string) => void;
   setIsLocked: (locked: boolean) => void;
   closeModal: () => void;
   closePasswordModal: () => void;
@@ -27,12 +35,13 @@ const useFile = create<FileStore>()(
       password: '',
       correctPassword: '',
       setPassword: (password: string) => set({ password }),
-      openFile: (id: string, password?: string) => {
+      openFile: (id: string, file?: File, password?: string) => {
         if (!get().isLocked) {
           set({
             fileId: id,
             isOpen: true,
             isPasswordOpen: false,
+            file,
           });
         } else {
           set({
