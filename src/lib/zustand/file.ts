@@ -91,35 +91,12 @@ const useFile = create<FileStore>()(
     }),
     {
       name: 'file-modal-store',
-      storage: {
-        getItem: (key) => {
-          const item = sessionStorage.getItem(key);
-          if (!item) return null;
-
-          const parsed = JSON.parse(item) as Partial<FileStore>;
-
-          return {
-            state: {
-              ...parsed,
-              unlockedFiles: new Set(parsed.unlockedFiles ?? []),
-            },
-          };
-        },
-        setItem: (key, value) => {
-          const storeValue = value as unknown as FileStore;
-
-          sessionStorage.setItem(
-            key,
-            JSON.stringify({
-              ...storeValue,
-              unlockedFiles: Array.from(storeValue.unlockedFiles || []),
-            }),
-          );
-        },
-        removeItem: (key) => {
-          sessionStorage.removeItem(key);
-        },
-      },
+      partialize: (state) => ({
+        fileId: state.fileId,
+        isOpen: state.isOpen,
+        file: state.file,
+        closeModal: state.closeModal,
+      }),
     },
   ),
 );

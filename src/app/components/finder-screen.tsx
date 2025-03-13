@@ -4,7 +4,7 @@ import { contents } from '@/lib/contents';
 
 export default function FinderScreen() {
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col z-50'>
       <FinderHeader title='Finder' />
       <section className='p-2 flex gap-8'>
         {contents.map((file) => (
