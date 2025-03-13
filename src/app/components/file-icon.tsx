@@ -1,8 +1,10 @@
+'use client';
+
 import useFile, { type File } from '@/zustand/file';
 
 import Article from '@/assets/article.svg';
 import Folder from '@/assets/folder.svg';
-// import Lock from '@/assets/lock.png';
+import Lock from '@/assets/lock.png';
 import Image, { StaticImageData } from 'next/image';
 
 interface FileIconProps {
@@ -30,33 +32,34 @@ export default function FileIcon({
   left_content,
   right_content,
 }: FileIconProps) {
+  const fileId = useFile((state) => state.fileId);
   const openFile = useFile((state) => state.openFile);
-  console.log(title, isLocked);
   const file: File = {
     left_content,
     image,
     right_content,
   };
 
+  const handleClick = () => {
+    openFile(title, file, isLocked ? correctPassword : undefined);
+  };
+
   return (
     <button
       className='w-fit relative flex flex-col cursor-pointer'
-      onClick={() => {
-        if (isLocked) openFile(title, file, correctPassword);
-        else openFile(title, file);
-      }}
+      onClick={handleClick}
     >
       <Image
         alt={type}
         className='w-24 h-24 scale-120 pointer-events-none'
         src={icons[type]}
       />
+      {isLocked && (
+        <Image src={Lock} alt='locked' className='absolute top-16 right-2' />
+      )}
       <h3 className='text-base font-chicago select-none cursor-pointer line-clamp-3 max-w-24'>
         {title}
       </h3>
-      {/* {isLocked && (
-        <Image src={Lock} alt='locked' className='absolute bottom-6 right-2' />
-      )} */}
     </button>
   );
 }

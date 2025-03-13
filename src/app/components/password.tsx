@@ -35,7 +35,7 @@ export default function Password() {
 
   return (
     <Dialog open={isPasswordOpen && isLocked} onOpenChange={closePasswordModal}>
-      <DialogContent className='max-w-[40vw] rounded-none bg-foreground border-4 border-background text-background font-chicago'>
+      <DialogContent className='max-w-[40vw] h-fit select-none rounded-none bg-foreground border-4 border-background text-background font-chicago'>
         <DialogHeader className='flex flex-col gap-4'>
           <DialogTitle className='flex gap-4 items-center text-[26px]'>
             <Image

@@ -50,7 +50,7 @@ export const contents: Content[] = [
   {
     title: 'Um antigo gigante computacional',
     left_content:
-      'O ENIAC,Computador Integrador Numérico Eletrônico, era um computador enorme, pesando mais de 30 toneladas e consumindo quase 200 quilowatts de energia, com 19.000 tubos de vácuo e outros componentes. Apesar de seu tamanho e complexidade, foi o protótipo dos computadores modernos, incorporando conceitos como portas lógicas ("e", "ou") e flip-flops para armazenamento e controle.',
+      'O ENIAC, Computador Integrador Numérico Eletrônico, era um computador enorme, pesando mais de 30 toneladas e consumindo quase 200 quilowatts de energia, com 19.000 tubos de vácuo e outros componentes. Apesar de seu tamanho e complexidade, foi o protótipo dos computadores modernos, incorporando conceitos como portas lógicas ("e", "ou") e flip-flops para armazenamento e controle.',
     right_content:
       'Ele realizava operações matemáticas complexas (multiplicação, divisão e raízes quadradas) e comparava números, armazenando até 20 números decimais de 10 dígitos. O ENIAC não tinha uma memória central; o armazenamento era distribuído em suas unidades funcionais, e a programação era feita externamente. Apesar de ter sido projetado décadas atrás, sua funcionalidade é similar à dos computadores atuais, marcando o início da era da computação digital.',
     image: Fourth,
@@ -68,7 +68,7 @@ export const contents: Content[] = [
   {
     title: 'As mulheres do ENIAC',
     left_content:
-      'O ENIAC, o primeiro dispositivo eletrônico digital, foi desenvolvido por John Mauchly e J. Presper Eckert na Universidade da Pensilvânia e programado inicialmente por seis mulheres: Kathleen McNulty, Jean Jennings, Frances Holberton, Marlyn Melzer, Frances Spence e Ruth Teitelbaum. Essas mulheres, recrutadas por suas habilidades matemáticas durante a Segunda Guerra Mundial, enfrentaram desafios únicos, já que a programação de computadores era uma área completamente nova.',
+      'O ENIAC foi desenvolvido por John Mauchly e J. Presper Eckert na Universidade da Pensilvânia e programado inicialmente por seis mulheres: Kathleen McNulty, Jean Jennings, Frances Holberton, Marlyn Melzer, Frances Spence e Ruth Teitelbaum. Essas mulheres, recrutadas por suas habilidades matemáticas durante a Segunda Guerra Mundial, enfrentaram desafios únicos, já que a programação de computadores era uma área completamente nova.',
     right_content:
       'Apesar de suas contribuições cruciais para cálculos balísticos e, posteriormente, para estudos termonucleares, elas não receberam o mesmo reconhecimento que os homens no projeto. Sua história reflete a invisibilidade das mulheres na ciência e na computação, destacando a necessidade de reconhecer suas conquistas como pioneiras na área, superando barreiras de gênero e discriminação.',
     image: Sixth,

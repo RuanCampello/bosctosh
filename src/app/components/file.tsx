@@ -17,14 +17,18 @@ export default function File() {
     <Dialog open={isOpen} onOpenChange={closeFile}>
       <DialogContent className='z-[10000] border-4 border-background bg-foreground text-background rounded-none border-solid p-0 min-w-[70vw] h-[70vh] flex flex-col gap-0'>
         <FinderHeader title={fileId!} />
-        <article className='p-8 grid grid-cols-3 h-full'>
-          <p className='font-garamond text-3xl'>{file.left_content}</p>
+        <article className='p-8 grid grid-cols-3 h-full gap-3 relative'>
+          <p className='font-garamond lg:text-[26px] md:text-xl'>
+            {file.left_content}
+          </p>
           <Image
             src={file.image}
             alt={fileId!}
             className='h-full w-[20vw] object-cover border-4 border-solid border-background'
           />
-          <p className='font-garamond text-3xl'>{file.right_content}</p>
+          <p className='font-garamond lg:text-[26px] md:text-xl'>
+            {file.right_content}
+          </p>
         </article>
       </DialogContent>
     </Dialog>
