@@ -1,4 +1,5 @@
 import { StaticImageData } from 'next/image';
+import { useEffect } from 'react';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -56,6 +57,7 @@ const useFile = create<FileStore>()(
             isOpen: false,
             isPasswordOpen: true,
             correctPassword: password,
+            file,
           });
         } else {
           set({
@@ -121,5 +123,18 @@ const useFile = create<FileStore>()(
     },
   ),
 );
+
+export const useFileState = () => {
+  useEffect(() => {
+    const storedUnlockedFiles = sessionStorage.getItem('unlockedFiles');
+    if (storedUnlockedFiles) {
+      const files = JSON.parse(storedUnlockedFiles);
+      if (Array.isArray(files)) {
+        const newUnlockedFiles = new Set(files);
+        useFile.setState({ unlockedFiles: newUnlockedFiles });
+      }
+    }
+  }, []);
+};
 
 export default useFile;

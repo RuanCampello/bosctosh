@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useFileState } from '@/lib/zustand/file';
 import useFinder from '@/zustand/finder';
 
 import { useState } from 'react';
@@ -17,6 +18,8 @@ export default function Finder() {
 
   const finderOpen = useFinder((state) => state.isFinderOpen);
   const setFinderOpen = useFinder((state) => state.setFinderOpen);
+
+  useFileState();
 
   return (
     <>

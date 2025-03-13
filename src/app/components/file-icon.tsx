@@ -33,6 +33,7 @@ export default function FileIcon({
   right_content,
 }: FileIconProps) {
   const openFile = useFile((state) => state.openFile);
+  const unlockedFiles = useFile((state) => state.unlockedFiles);
   const file: File = {
     left_content,
     image,
@@ -42,6 +43,8 @@ export default function FileIcon({
   const handleClick = () => {
     openFile(title, file, isLocked ? correctPassword : undefined);
   };
+
+  const isUnlocked = unlockedFiles.has(title);
 
   return (
     <button
@@ -53,7 +56,7 @@ export default function FileIcon({
         className='w-24 h-24 scale-120 pointer-events-none'
         src={icons[type]}
       />
-      {isLocked && (
+      {!isUnlocked && isLocked && (
         <Image src={Lock} alt='locked' className='absolute top-16 right-2' />
       )}
       <h3 className='text-base font-chicago select-none cursor-pointer line-clamp-3 max-w-24'>
