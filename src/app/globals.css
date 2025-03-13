@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Eczar:wght@400..800&display=swap');
-
 @import 'tailwindcss';
 @plugin 'tailwindcss-animate';
 
@@ -47,8 +45,8 @@
   --color-secondary: var(--secondary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-garamond: var(--font-garamond);
   --font-chicago: 'Chicago', 'sans-serif';
-  --font-garamond: 'EB Garamond', 'serif';
   --font-eczar: 'Eczar', 'serif';
 }
 

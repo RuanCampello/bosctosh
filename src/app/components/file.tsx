@@ -25,7 +25,6 @@ export default function File() {
   }, [fileId, file, openFile, isOpenStored]);
 
   if (!file) {
-    console.log('No file', file, fileId);
     return null;
   }
 
