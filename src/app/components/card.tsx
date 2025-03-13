@@ -54,8 +54,8 @@ export default function PassKeysCard() {
       className='w-60 cursor-grab absolute'
     >
       <Image src={Card} alt='card' className='pointer-events-none' />
-      <p className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-background font-bold'>
-        asdadsda
+      <p className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-background font-chicago font-bold'>
+        neumann
       </p>
     </article>
   );

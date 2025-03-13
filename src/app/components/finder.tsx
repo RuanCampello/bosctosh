@@ -37,11 +37,11 @@ export default function Finder() {
           sideOffset={12}
           side='bottom'
           align='end'
-          className='rounded-none bg-foreground text-background p-0 m-0 border-0 ms-2 '
+          className='rounded-none bg-foreground text-background p-0 m-0 border-0 ms-2'
         >
           <DropdownMenuItem
             onClick={() => setFinderOpen(!finderOpen)}
-            className='font-chicago border-4 border-background p-1 bg-foreground hover:brightness-90 transition-all duration-300 cursor-pointer'
+            className='font-chicago border-4 w-48 border-background p-1 bg-foreground hover:brightness-90 transition-all duration-300 cursor-pointer text-lg'
           >
             Finder
           </DropdownMenuItem>

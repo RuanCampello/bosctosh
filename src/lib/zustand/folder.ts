@@ -1,72 +1,72 @@
-import { StaticImageData } from 'next/image';
 import { create } from 'zustand';
-import { contents } from '../contents';
+import { persist } from 'zustand/middleware';
 
-export type File = {
-  title: string;
-  left_content: string;
-  right_content: string;
-  image: StaticImageData;
-  type: 'article' | 'file' | 'folder';
-  isLocked?: boolean;
-};
-
-interface Folder {
-  id: string;
-  name: string;
-  files: File[];
-}
-
-interface FolderStore {
+interface FileStore {
+  fileId: string | null;
   isOpen: boolean;
-  folderId: string | null;
-  folders: Record<string, Folder>;
-  openFolder: (id: string) => void;
-  closeFolder: () => void;
+  isPasswordOpen: boolean;
+  password: string;
+  setPassword: (password: string) => void;
+  isLocked: boolean;
+  openFile: (id: string) => void;
+  setIsLocked: (locked: boolean) => void;
+  closeModal: () => void;
+  closePasswordModal: () => void;
+  clearFile: () => void;
+  unlockFile: () => void;
 }
 
-const generateFolders = (): Record<string, Folder> => {
-  return contents.reduce(
-    (acc, content) => {
-      const folderId = 'artigos';
-
-      if (!acc[folderId]) {
-        acc[folderId] = {
-          id: folderId,
-          name: 'Artigos',
-          files: [],
-        };
-      }
-
-      acc[folderId].files.push({
-        title: content.title,
-        left_content: content.left_content,
-        right_content: content.right_content,
-        image: content.image,
-        type: content.type,
-        isLocked: content.isLocked ?? false,
-      });
-
-      return acc;
-    },
-    {} as Record<string, Folder>,
-  );
-};
-
-const useFolder = create<FolderStore>((set) => ({
-  isOpen: false,
-  folderId: null,
-  folders: generateFolders(),
-  openFolder: (id) =>
-    set(() => ({
-      isOpen: true,
-      folderId: id,
-    })),
-  closeFolder: () =>
-    set({
+const useFile = create<FileStore>()(
+  persist(
+    (set, get) => ({
+      fileId: null,
+      isLocked: false,
       isOpen: false,
-      folderId: null,
+      isPasswordOpen: false,
+      password: '',
+      setPassword: (password: string) => set({ password }),
+      openFile: (id: string) => {
+        if (!get().isLocked) {
+          set({
+            fileId: id,
+            isOpen: true,
+            isPasswordOpen: false,
+          });
+        } else {
+          set({
+            fileId: id,
+            isOpen: false,
+            isPasswordOpen: true,
+          });
+        }
+      },
+      setIsLocked: (locked: boolean) => set({ isLocked: locked }),
+      closeModal: () => set({ isOpen: false }),
+      closePasswordModal: () => set({ isPasswordOpen: false }),
+      clearFile: () => set({ fileId: null, isOpen: false }),
+      unlockFile: () => {
+        if (get().isLocked) {
+          set({
+            isLocked: false,
+            isOpen: true,
+            isPasswordOpen: false,
+          });
+        }
+      },
     }),
-}));
+    {
+      name: 'file-modal-store',
+      storage: {
+        getItem: (key) => {
+          const item = sessionStorage.getItem(key);
+          return item ? JSON.parse(item) : null;
+        },
+        setItem: (key, value) =>
+          sessionStorage.setItem(key, JSON.stringify(value)),
+        removeItem: (key) => sessionStorage.removeItem(key),
+      },
+    },
+  ),
+);
 
-export default useFolder;
+export default useFile;

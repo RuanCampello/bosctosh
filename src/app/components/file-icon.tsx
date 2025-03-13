@@ -1,9 +1,9 @@
+import useFile from '@/zustand/file';
+
 import Article from '@/assets/article.svg';
 import Folder from '@/assets/folder.svg';
 import Lock from '@/assets/lock.png';
 import File from '@/assets/text.svg';
-import useFile from '@/lib/zustand/file';
-import useFolder from '@/lib/zustand/folder';
 import Image from 'next/image';
 
 interface FileIconProps {
@@ -26,41 +26,27 @@ export default function FileIcon({
   correctPassword,
 }: FileIconProps) {
   const openFile = useFile((state) => state.openFile);
-  const setIsLocked = useFile((state) => state.setIsLocked);
   const isFileLocked = useFile((state) => state.isLocked);
-  const openFolder = useFolder((state) => state.openFolder);
+  console.log(title, isLocked);
 
   return (
     <button
-      className='w-fit relative flex flex-col cursor-pointer justify-center'
+      className='w-fit relative flex flex-col cursor-pointer'
       onClick={() => {
-        if (type === 'file' || type === 'article') {
-          if (
-            isLocked &&
-            sessionStorage.getItem(`file-locked-${title}`) !== 'false'
-          ) {
-            sessionStorage.setItem(`file-locked-${title}`, 'false');
-            setIsLocked(false);
-          }
-
-          openFile(title, correctPassword);
-        } else if (type === 'folder') {
-          openFolder(title);
-        }
+        if (isLocked) openFile(title, correctPassword);
+        else openFile(title);
       }}
     >
       <Image
         alt={type}
-        className='w-32 h-32 scale-120 pointer-events-none'
+        className='w-20 h-20 scale-120 pointer-events-none'
         src={icons[type]}
       />
-      <h3
-        title={title}
-        className='text-lg -translate-y-2 font-chicago select-none cursor-pointer max-w-32 text-center leading-normal line-clamp-2'
-      >
+      <h3 className='text-base font-chicago select-none cursor-pointer'>
         {title}
       </h3>
-      {isFileLocked && (
+      {/* Show the lock icon only if the file is locked */}
+      {isLocked && (
         <Image src={Lock} alt='locked' className='absolute bottom-6 right-2' />
       )}
     </button>

@@ -15,6 +15,7 @@ type Content = {
   image: StaticImageData;
   type: 'article' | 'file' | 'folder';
   isLocked?: boolean;
+  correctPassword?: string;
 };
 
 export const contents: Content[] = [
@@ -26,7 +27,6 @@ export const contents: Content[] = [
       'O ENIAC foi o protótipo do qual a maioria dos outros computadores modernos evoluiram.Este progenitor de uma nova indústria - a chave que abriu novas abordagens para a solução de muitos problemas científicos perplexos, o dispositivo pioneiro na evolução da computação digital de alta velocidade e maquinas de processamento automatico de dados - será preservado para a posteridade.',
     image: First,
     type: 'article',
-    isLocked: false,
   },
   {
     title: 'O precursor de uma nova indústria',
@@ -36,7 +36,6 @@ export const contents: Content[] = [
       'O armazenamento era distribuído nas unidades funcionais, e a programação era feita externamente, não internamente. Apesar dessas diferenças, sua funcionalidade é surpreendenteme nte similar aos computadores modernos, mesmo tendo sido projetado há décadas.',
     image: Secound,
     type: 'article',
-    isLocked: false,
   },
   {
     title: 'Uma herança a ser preservada',
@@ -47,7 +46,6 @@ export const contents: Content[] = [
       'resultados inéditos, mas o avanço tecnológico que ele próprio impulsionou o tornou obsoleto. Sua desativação marcou o fim natural de um projeto que cumpriu seu propósito histórico.',
     image: Third,
     type: 'article',
-    isLocked: false,
   },
   {
     title: 'Um antigo gigante computacional',
@@ -57,7 +55,6 @@ export const contents: Content[] = [
       'Ele realizava operações matemáticas complexas (multiplicação, divisão e raízes quadradas) e comparava números, armazenando até 20 números decimais de 10 dígitos. O ENIAC não tinha uma memória central; o armazenamento era distribuído em suas unidades funcionais, e a programação era feita externamente. Apesar de ter sido projetado décadas atrás, sua funcionalidade é similar à dos computadores atuais, marcando o início da era da computação digital.',
     image: Fourth,
     type: 'article',
-    isLocked: false,
   },
   {
     title: 'As complicações do ENIAC',
@@ -67,7 +64,6 @@ export const contents: Content[] = [
       'O ENIAC realizava operações matemáticas complexas como raízes quadradas e armazenava até 20 números de 10 dígitos. Inicialmente lento para programar, foi modificado em 1948 para usar programas fixos internamente, sugerido por John von Neumann, eliminando a necessidade de reconectar cabos e agilizando operações. Em 1949, com o Projeto Chore, o ENIAC demonstrou maior eficiência e menos falhas, consolidando-se como uma ferramenta útil para cálculos complexos.',
     image: Fifth,
     type: 'article',
-    isLocked: false,
   },
   {
     title: 'As mulheres do ENIAC',
@@ -77,7 +73,8 @@ export const contents: Content[] = [
       'Apesar de suas contribuições cruciais para cálculos balísticos e, posteriormente, para estudos termonucleares, elas não receberam o mesmo reconhecimento que os homens no projeto. Sua história reflete a invisibilidade das mulheres na ciência e na computação, destacando a necessidade de reconhecer suas conquistas como pioneiras na área, superando barreiras de gênero e discriminação.',
     image: Sixth,
     type: 'article',
-    isLocked: false,
+    isLocked: true,
+    correctPassword: 'neumann',
   },
   {
     title: 'A história do ENIAC',
@@ -87,6 +84,5 @@ export const contents: Content[] = [
       'Originalmente programado externamente, o ENIAC foi adaptado em 1948 para operar com programas internos, graças a uma sugestão de John von Neumann, aumentando sua eficiência. Desativado em 1955, tornou-se obsoleto com o avanço tecnológico, mas seu legado foi preservado no Instituto Smithsonian, marcando o início da era da computação digital e impulsionando o desenvolvimento dos computadores modernos.',
     image: Seventh,
     type: 'article',
-    isLocked: false,
   },
 ];
