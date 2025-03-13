@@ -26,7 +26,6 @@ export default function FileIcon({
   correctPassword,
 }: FileIconProps) {
   const openFile = useFile((state) => state.openFile);
-  const isFileLocked = useFile((state) => state.isLocked);
   console.log(title, isLocked);
 
   return (
