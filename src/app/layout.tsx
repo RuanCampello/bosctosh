@@ -1,5 +1,6 @@
 import File from '@/components/file';
 import Password from '@/components/password';
+import Readme from '@/components/readme';
 import type { Metadata } from 'next';
 import { EB_Garamond, Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -38,6 +39,7 @@ export default function RootLayout({
         {children}
         <File />
         <Password />
+        <Readme />
       </body>
     </html>
   );

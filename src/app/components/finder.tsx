@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useFileState } from '@/lib/zustand/file';
+import useReadme from '@/lib/zustand/readme';
 import useFinder from '@/zustand/finder';
 
 import { useState } from 'react';
@@ -16,6 +17,7 @@ import { useState } from 'react';
 export default function Finder() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  const { isReadmeOpen, setReadmeOpen } = useReadme();
   const finderOpen = useFinder((state) => state.isFinderOpen);
   const setFinderOpen = useFinder((state) => state.setFinderOpen);
 
@@ -40,11 +42,17 @@ export default function Finder() {
           sideOffset={12}
           side='bottom'
           align='end'
-          className='rounded-none bg-foreground text-background p-0 m-0 border-0 ms-2'
+          className='rounded-none bg-foreground text-background p-0 m-0 border-0 ms-2 w-72'
         >
           <DropdownMenuItem
+            onClick={() => setReadmeOpen(!isReadmeOpen)}
+            className='font-chicago border-4 w-full border-background p-1 bg-foreground hover:brightness-90 transition-all duration-300 cursor-pointer text-[17px]'
+          >
+            Sobre este computador...
+          </DropdownMenuItem>
+          <DropdownMenuItem
             onClick={() => setFinderOpen(!finderOpen)}
-            className='font-chicago border-4 w-48 border-background p-1 bg-foreground hover:brightness-90 transition-all duration-300 cursor-pointer text-lg'
+            className='font-chicago border-4 w-full border-background p-1 bg-foreground hover:brightness-90 transition-all duration-300 cursor-pointer text-[17px]'
           >
             Finder
           </DropdownMenuItem>
