@@ -32,7 +32,6 @@ export default function FileIcon({
   left_content,
   right_content,
 }: FileIconProps) {
-  const fileId = useFile((state) => state.fileId);
   const openFile = useFile((state) => state.openFile);
   const file: File = {
     left_content,

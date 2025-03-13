@@ -15,7 +15,7 @@ interface FileStore {
   isPasswordOpen: boolean;
   password: string;
   correctPassword: string;
-  unlockedFiles: Set<string>; // Track unlocked files
+  unlockedFiles: Set<string>;
   setPassword: (password: string) => void;
   openFile: (id: string, file: File, password?: string) => void;
   closeModal: () => void;
@@ -35,6 +35,10 @@ const useFile = create<FileStore>()(
       setPassword: (password: string) => set({ password }),
       openFile: (id: string, file: File, password?: string) => {
         const { unlockedFiles } = get();
+
+        if (!(unlockedFiles instanceof Set)) {
+          set({ unlockedFiles: new Set(unlockedFiles) });
+        }
 
         if (unlockedFiles.has(id)) {
           set({
@@ -73,6 +77,11 @@ const useFile = create<FileStore>()(
             isPasswordOpen: false,
             unlockedFiles: new Set([...unlockedFiles, id]),
           });
+
+          sessionStorage.setItem(
+            'unlockedFiles',
+            JSON.stringify([...unlockedFiles, id]),
+          );
         } else {
           alert('Incorrect password');
         }
@@ -83,22 +92,27 @@ const useFile = create<FileStore>()(
       storage: {
         getItem: (key) => {
           const item = sessionStorage.getItem(key);
-          if (item) {
-            const parsed = JSON.parse(item);
-            return {
+          if (!item) return null;
+
+          const parsed = JSON.parse(item) as Partial<FileStore>;
+
+          return {
+            state: {
               ...parsed,
-              unlockedFiles: new Set(parsed.unlockedFiles || []),
-            };
-          }
-          return null;
+              unlockedFiles: new Set(parsed.unlockedFiles ?? []),
+            },
+          };
         },
         setItem: (key, value) => {
           const storeValue = value as unknown as FileStore;
-          const serializedValue = JSON.stringify({
-            ...storeValue,
-            unlockedFiles: Array.from(storeValue.unlockedFiles || []),
-          });
-          sessionStorage.setItem(key, serializedValue);
+
+          sessionStorage.setItem(
+            key,
+            JSON.stringify({
+              ...storeValue,
+              unlockedFiles: Array.from(storeValue.unlockedFiles || []),
+            }),
+          );
         },
         removeItem: (key) => {
           sessionStorage.removeItem(key);

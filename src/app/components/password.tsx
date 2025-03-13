@@ -17,24 +17,23 @@ import Image from 'next/image';
 
 export default function Password() {
   const password = useFile((state) => state.password);
+  const fileId = useFile((state) => state.fileId);
   const isPasswordOpen = useFile((state) => state.isPasswordOpen);
   const closePasswordModal = useFile((state) => state.closePasswordModal);
   const setPassword = useFile((state) => state.setPassword);
   const unlockFile = useFile((state) => state.unlockFile);
-  const isLocked = useFile((state) => state.isLocked);
   const correctPassword = useFile((state) => state.correctPassword);
 
   function tryUnlockFile() {
-    console.log(password, correctPassword);
     if (password === correctPassword) {
-      unlockFile();
+      unlockFile(fileId!);
     }
 
     closePasswordModal();
   }
 
   return (
-    <Dialog open={isPasswordOpen && isLocked} onOpenChange={closePasswordModal}>
+    <Dialog open={isPasswordOpen} onOpenChange={closePasswordModal}>
       <DialogContent className='max-w-[40vw] h-fit select-none rounded-none bg-foreground border-4 border-background text-background font-chicago'>
         <DialogHeader className='flex flex-col gap-4'>
           <DialogTitle className='flex gap-4 items-center text-[26px]'>
