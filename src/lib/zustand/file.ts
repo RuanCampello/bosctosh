@@ -15,13 +15,11 @@ interface FileStore {
   isPasswordOpen: boolean;
   password: string;
   correctPassword: string;
+  unlockedFiles: Set<string>; // Track unlocked files
   setPassword: (password: string) => void;
-  isLocked: boolean;
   openFile: (id: string, file: File, password?: string) => void;
-  setIsLocked: (locked: boolean) => void;
   closeModal: () => void;
   closePasswordModal: () => void;
-  clearFile: () => void;
   unlockFile: (id: string) => void;
 }
 
@@ -29,21 +27,31 @@ const useFile = create<FileStore>()(
   persist(
     (set, get) => ({
       fileId: null,
-      isLocked: false,
       isOpen: false,
       isPasswordOpen: false,
       password: '',
       correctPassword: '',
+      unlockedFiles: new Set<string>(),
       setPassword: (password: string) => set({ password }),
-      openFile: (id: string, file?: File, password?: string) => {
+      openFile: (id: string, file: File, password?: string) => {
+        const { unlockedFiles } = get();
+
+        if (unlockedFiles.has(id)) {
+          set({
+            fileId: id,
+            isOpen: true,
+            isPasswordOpen: false,
+            file,
+          });
+          return;
+        }
+
         if (password) {
           set({
             fileId: id,
             isOpen: false,
             isPasswordOpen: true,
-            file,
             correctPassword: password,
-            isLocked: true,
           });
         } else {
           set({
@@ -51,21 +59,22 @@ const useFile = create<FileStore>()(
             isOpen: true,
             isPasswordOpen: false,
             file,
-            isLocked: false,
           });
         }
       },
-      setIsLocked: (locked: boolean) => set({ isLocked: locked }),
       closeModal: () => set({ isOpen: false }),
       closePasswordModal: () => set({ isPasswordOpen: false }),
-      clearFile: () => set({ fileId: null, isOpen: false }),
-      unlockFile: () => {
-        if (get().isLocked) {
+      unlockFile: (id: string) => {
+        const { password, correctPassword, unlockedFiles } = get();
+
+        if (password === correctPassword) {
           set({
-            isLocked: false,
             isOpen: true,
             isPasswordOpen: false,
+            unlockedFiles: new Set([...unlockedFiles, id]),
           });
+        } else {
+          alert('Incorrect password');
         }
       },
     }),
@@ -74,11 +83,26 @@ const useFile = create<FileStore>()(
       storage: {
         getItem: (key) => {
           const item = sessionStorage.getItem(key);
-          return item ? JSON.parse(item) : null;
+          if (item) {
+            const parsed = JSON.parse(item);
+            return {
+              ...parsed,
+              unlockedFiles: new Set(parsed.unlockedFiles || []),
+            };
+          }
+          return null;
         },
-        setItem: (key, value) =>
-          sessionStorage.setItem(key, JSON.stringify(value)),
-        removeItem: (key) => sessionStorage.removeItem(key),
+        setItem: (key, value) => {
+          const storeValue = value as unknown as FileStore;
+          const serializedValue = JSON.stringify({
+            ...storeValue,
+            unlockedFiles: Array.from(storeValue.unlockedFiles || []),
+          });
+          sessionStorage.setItem(key, serializedValue);
+        },
+        removeItem: (key) => {
+          sessionStorage.removeItem(key);
+        },
       },
     },
   ),

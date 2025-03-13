@@ -18,7 +18,7 @@ export default function File() {
       <DialogContent className='z-[10000] border-4 border-background bg-foreground text-background rounded-none border-solid p-0 min-w-[70vw] h-[70vh] flex flex-col gap-0'>
         <FinderHeader title={fileId!} />
         <article className='p-8 grid grid-cols-3 h-full gap-3 relative'>
-          <p className='font-garamond lg:text-[26px] md:text-xl'>
+          <p className='font-garamond select-none lg:text-[26px] md:text-xl'>
             {file.left_content}
           </p>
           <Image
@@ -26,7 +26,7 @@ export default function File() {
             alt={fileId!}
             className='h-full w-[20vw] object-cover border-4 border-solid border-background'
           />
-          <p className='font-garamond lg:text-[26px] md:text-xl'>
+          <p className='font-garamond select-none lg:text-[26px] md:text-xl'>
             {file.right_content}
           </p>
         </article>
